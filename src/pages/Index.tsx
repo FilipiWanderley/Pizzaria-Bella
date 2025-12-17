@@ -18,8 +18,8 @@ const Index = () => {
 
     const element = document.getElementById(section);
     if (element) {
-      // Offset for header height (approx 120px)
-      const headerOffset = 120;
+      // Offset for header height
+      const headerOffset = 140;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -33,13 +33,14 @@ const Index = () => {
   // Scroll spy to update active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; // Offset for better detection
+      // Adjusted offset for more natural detection point (middle of viewport approx)
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       const sections = [
         { id: "home", offset: 0 },
-        { id: "tradicionais", offset: document.getElementById("tradicionais")?.offsetTop || 0 },
-        { id: "especiais", offset: document.getElementById("especiais")?.offsetTop || 0 },
-        { id: "bebidas", offset: document.getElementById("bebidas")?.offsetTop || 0 },
+        { id: "tradicionais", offset: (document.getElementById("tradicionais")?.offsetTop || 0) - 140 },
+        { id: "especiais", offset: (document.getElementById("especiais")?.offsetTop || 0) - 140 },
+        { id: "bebidas", offset: (document.getElementById("bebidas")?.offsetTop || 0) - 140 },
       ];
 
       for (let i = sections.length - 1; i >= 0; i--) {
