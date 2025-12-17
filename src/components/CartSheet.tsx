@@ -22,9 +22,9 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="flex w-full flex-col sm:max-w-md">
+      <SheetContent className="flex w-full flex-col sm:max-w-md bg-white text-gray-900">
         <SheetHeader className="border-b pb-4">
-          <SheetTitle className="flex items-center gap-2">
+          <SheetTitle className="flex items-center gap-2 text-gray-900">
             <ShoppingBag className="h-5 w-5" />
             Sua Sacola ({itemCount})
           </SheetTitle>

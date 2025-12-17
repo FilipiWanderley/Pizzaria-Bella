@@ -36,13 +36,13 @@ const mockOrders = [
 export function OrdersDialog({ open, onOpenChange }: OrdersDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white text-gray-900">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle className="flex items-center gap-2 text-gray-900">
             <ClipboardList className="h-5 w-5" />
             Meus Pedidos
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-gray-500">
             Acompanhe o status dos seus pedidos recentes.
           </DialogDescription>
         </DialogHeader>
@@ -54,8 +54,8 @@ export function OrdersDialog({ open, onOpenChange }: OrdersDialogProps) {
                 key={order.id}
                 className={`rounded-lg border p-4 ${
                   order.active
-                    ? "border-pizzeria-red/20 bg-pizzeria-red/5"
-                    : "border-gray-100 bg-gray-50"
+                    ? "border-pizzeria-red/20 bg-white shadow-sm"
+                    : "border-gray-100 bg-white"
                 }`}
               >
                 <div className="mb-2 flex items-center justify-between">
@@ -63,8 +63,8 @@ export function OrdersDialog({ open, onOpenChange }: OrdersDialogProps) {
                   <span
                     className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${
                       order.active
-                        ? "bg-amber-100 text-amber-700"
-                        : "bg-green-100 text-green-700"
+                        ? "bg-amber-100 text-amber-800"
+                        : "bg-green-100 text-green-800"
                     }`}
                   >
                     {order.active ? (
@@ -76,7 +76,7 @@ export function OrdersDialog({ open, onOpenChange }: OrdersDialogProps) {
                   </span>
                 </div>
                 
-                <div className="mb-3 text-sm text-gray-600">
+                <div className="mb-3 text-sm text-gray-600 font-medium">
                   {order.items.join(", ")}
                 </div>
 
