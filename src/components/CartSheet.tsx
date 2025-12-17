@@ -280,7 +280,7 @@ export function CartSheet({ open, onOpenChange, onOpenOrders }: CartSheetProps) 
         <Button 
           variant="outline" 
           onClick={() => onOpenChange(false)}
-          className="w-full"
+          className="w-full border-gray-300 text-gray-900 hover:bg-gray-100"
         >
           Fechar
         </Button>
