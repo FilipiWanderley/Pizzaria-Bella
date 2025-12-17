@@ -2,41 +2,54 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { HomeSection } from "@/components/sections/HomeSection";
 import { MenuSection } from "@/components/sections/MenuSection";
+import { BottomNav } from "@/components/BottomNav";
 import { pizzasTradicionais, pizzasEspeciais, bebidas } from "@/data/menuData";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("tradicionais");
 
   const handleNavigate = (section: string) => {
-    setActiveSection(section);
+    setActiveSection(section === "home" ? "tradicionais" : section);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const getSectionData = () => {
+    switch (activeSection) {
+      case "especiais":
+        return { 
+          title: "Pizzas Especiais", 
+          description: "Sabores únicos e ingredientes premium para paladares exigentes.",
+          items: pizzasEspeciais 
+        };
+      case "bebidas":
+        return { 
+          title: "Bebidas", 
+          description: "Refrigerantes, sucos e cervejas geladas para acompanhar.",
+          items: bebidas 
+        };
+      case "tradicionais":
+      default:
+        return { 
+          title: "Pizzas Tradicionais", 
+          description: "Pizzas com massa caseira especial, assadas em forno a lenha. Experimente!",
+          items: pizzasTradicionais 
+        };
+    }
+  };
+
+  const { title, description, items } = getSectionData();
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50 pb-20">
       <Header activeSection={activeSection} onNavigate={handleNavigate} />
       
-      <main className="container py-6">
-        {activeSection === "home" && (
-          <HomeSection onNavigate={handleNavigate} />
-        )}
+      <main className="container py-4 space-y-6">
+        <HomeSection onNavigate={handleNavigate} />
         
-        {activeSection === "tradicionais" && (
-          <MenuSection title="Pizzas Tradicionais" items={pizzasTradicionais} variant="round-dark" />
-        )}
-        
-        {activeSection === "especiais" && (
-          <MenuSection title="Pizzas Especiais" items={pizzasEspeciais} variant="round-dark" />
-        )}
-        
-        {activeSection === "bebidas" && (
-          <MenuSection title="Bebidas" items={bebidas} variant="round-dark" />
-        )}
+        <MenuSection title={title} description={description} items={items} />
       </main>
 
-      <footer className="container pb-6 pt-8 text-center text-sm text-muted-foreground">
-        © 2024 Pizzaria Bella — Todos os direitos reservados
-      </footer>
+      <BottomNav />
     </div>
   );
 };

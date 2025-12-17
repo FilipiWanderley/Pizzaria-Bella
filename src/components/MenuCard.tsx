@@ -1,3 +1,5 @@
+import { Plus } from "lucide-react";
+
 interface MenuCardProps {
   image: string;
   title: string;
@@ -6,45 +8,38 @@ interface MenuCardProps {
   variant?: "standard" | "round-dark";
 }
 
-export function MenuCard({ image, title, description, price, variant = "standard" }: MenuCardProps) {
-  if (variant === "round-dark") {
-    return (
-      <div className="group rounded-2xl border border-white/10 bg-[#151515] p-6 text-white shadow-card transition-all hover:-translate-y-1 hover:shadow-elevated">
-        <div className="flex flex-col items-center">
-          <div className="relative mb-4 h-28 w-28 overflow-hidden rounded-full ring-2 ring-amber-400 shadow-md">
-            <img
-              src={image}
-              alt={title}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
+export function MenuCard({ image, title, description, price }: MenuCardProps) {
+  return (
+    <div className="group relative flex w-full overflow-hidden rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md border border-gray-100">
+      <div className="flex flex-1 flex-col justify-between pr-4">
+        <div>
+          <h3 className="mb-1 text-lg font-bold text-gray-900">{title}</h3>
+          <p className="mb-2 text-sm text-gray-500 line-clamp-2">{description}</p>
+        </div>
+        
+        <div className="flex items-center gap-2 mt-2">
+          <div className="flex flex-col">
+             <span className="text-xs text-gray-400 line-through">R$ {parseFloat(price.replace('R$ ', '').replace(',', '.')) + 10},00</span>
+             <span className="text-base font-bold text-pizzeria-green">
+              {price}
+            </span>
           </div>
-          <h3 className="mb-1 text-base font-bold tracking-wide">{title}</h3>
-          <p className="mb-4 text-sm text-white/70 text-center">{description}</p>
-          <span className="inline-flex items-center rounded-full bg-amber-500 px-3 py-1 text-sm font-bold text-black shadow">
-            {price}
+          <span className="rounded-md bg-pizzeria-green/10 px-2 py-0.5 text-xs font-semibold text-pizzeria-green">
+            -17%
           </span>
         </div>
       </div>
-    );
-  }
 
-  return (
-    <div className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elevated">
-      <div className="h-40 overflow-hidden">
+      <div className="relative h-28 w-28 flex-shrink-0">
         <img
           src={image}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="h-full w-full rounded-lg object-cover shadow-sm"
           loading="lazy"
         />
-      </div>
-      <div className="p-4">
-        <h3 className="mb-1 font-bold text-foreground">{title}</h3>
-        <p className="mb-3 text-sm text-muted-foreground">{description}</p>
-        <span className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-gradient-to-r from-muted to-card px-3 py-2 font-bold text-pizzeria-chocolate">
-          {price}
-        </span>
+        <button className="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-pizzeria-red shadow-md hover:bg-gray-50 ring-1 ring-gray-100">
+          <Plus className="h-5 w-5" />
+        </button>
       </div>
     </div>
   );

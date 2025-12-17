@@ -65,7 +65,8 @@ export default {
         },
         pizzeria: {
           orange: "hsl(var(--pizzeria-orange))",
-          red: "hsl(var(--pizzeria-red))",
+          red: "#C41E3A", // Updated to match reference red
+          green: "#16a34a", // New green for prices
           cream: "hsl(var(--pizzeria-cream))",
           chocolate: "hsl(var(--pizzeria-chocolate))",
           warmBg: "hsl(var(--pizzeria-warm-bg))",

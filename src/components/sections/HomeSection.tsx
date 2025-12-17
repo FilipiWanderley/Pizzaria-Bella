@@ -1,103 +1,44 @@
-import { Clock, Truck, Gift, Percent, Beer } from "lucide-react";
-import { PromoCard } from "../PromoCard";
-import { MenuCard } from "../MenuCard";
-import { CategoryTile } from "../CategoryTile";
+import { MapPin, Search } from "lucide-react";
 
 interface HomeSectionProps {
   onNavigate: (section: string) => void;
 }
 
-const highlights = [
-  {
-    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&auto=format&fit=crop",
-    title: "Pizza Margherita",
-    description: "A clássica italiana com molho de tomate e manjericão",
-    price: "R$ 39,90",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&auto=format&fit=crop",
-    title: "Pizza Pepperoni",
-    description: "Fatias generosas de pepperoni artesanal",
-    price: "R$ 47,90",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop",
-    title: "Quatro Queijos",
-    description: "Mozzarella, gorgonzola, parmesão e provolone",
-    price: "R$ 49,90",
-  },
-];
-
 export function HomeSection({ onNavigate }: HomeSectionProps) {
   return (
-    <section className="animate-fade-in space-y-8">
-      <div className="grid gap-6 md:grid-cols-2 md:items-center">
-        <div className="space-y-4 rounded-2xl bg-[#151515] p-6 text-white shadow-card">
-          <h1 className="text-3xl font-bold md:text-4xl">Sabores que inspiram</h1>
-          <p className="leading-relaxed text-white/70">
-            Explore nossa seleção de pizzas artesanais feitas com ingredientes frescos e receitas tradicionais italianas.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold">Ingredientes selecionados</span>
-            <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold">Entrega rápida</span>
-            <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold">Preços justos</span>
-          </div>
-          <div className="flex flex-wrap gap-2 pt-2">
-            <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold">
-              <Clock className="h-4 w-4" /> 30–45 min
-            </span>
-            <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold">
-              <Truck className="h-4 w-4" /> Frete grátis +R$80
-            </span>
-            <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold">Aberto: 18h–23h</span>
-          </div>
-          <button
-            onClick={() => onNavigate("tradicionais")}
-            className="mt-2 inline-block rounded-full bg-amber-500 px-5 py-2.5 font-bold text-black transition-transform hover:scale-105"
-          >
-            Ver Cardápio
-          </button>
-        </div>
-        <div className="h-56 overflow-hidden rounded-2xl bg-[#151515] shadow-card md:h-72">
-          <img
-            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&auto=format&fit=crop"
-            alt="Pizza artesanal"
-            className="h-full w-full object-cover"
-          />
+    <section className="animate-fade-in space-y-4">
+      {/* Hero Image */}
+      <div className="relative h-48 w-full overflow-hidden rounded-xl shadow-sm md:h-64">
+        <img
+          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&auto=format&fit=crop"
+          alt="Pizza Banner"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+           <h1 className="text-2xl font-bold text-white">Os melhores sabores</h1>
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <PromoCard icon={Gift} title="Pizza 2 por 1" subtitle="Seg–Qui, sabores selecionados" iconBg="bg-amber-500/20" />
-        <PromoCard icon={Percent} title="Combo Família -15%" subtitle="2 pizzas grandes + refrigerante" iconBg="bg-red-500/20" />
-        <PromoCard icon={Beer} title="Happy Hour -20%" subtitle="Bebidas 18h–20h" iconBg="bg-amber-300/20" />
-      </div>
-
-      <div>
-        <h2 className="mb-4 text-2xl font-bold text-white">Destaques</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {highlights.map((item) => (
-            <MenuCard key={item.title} variant="round-dark" {...item} />
-          ))}
+      {/* Info Card - Location */}
+      <div className="rounded-xl bg-white p-4 shadow-sm border border-gray-100 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+          <MapPin className="h-5 w-5" />
+        </div>
+        <div>
+          <p className="text-xs text-gray-500">No local</p>
+          <p className="font-bold text-gray-900">Mesa 2</p>
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <CategoryTile
-          image="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&auto=format&fit=crop"
-          title="Pizzas Tradicionais"
-          onClick={() => onNavigate("tradicionais")}
-        />
-        <CategoryTile
-          image="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&auto=format&fit=crop"
-          title="Pizzas Especiais"
-          onClick={() => onNavigate("especiais")}
-        />
-        <CategoryTile
-          image="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=800&auto=format&fit=crop"
-          title="Bebidas"
-          onClick={() => onNavigate("bebidas")}
-        />
+      {/* Search / Category Filter Mock */}
+      <div className="relative">
+        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+          <Search className="h-5 w-5 text-gray-400" />
+        </div>
+        <button className="w-full rounded-xl bg-white py-3 pl-10 pr-4 text-left text-sm text-gray-500 shadow-sm border border-gray-100 flex items-center justify-between">
+          <span>Categorias</span>
+          <span className="text-gray-400">▼</span>
+        </button>
       </div>
     </section>
   );
