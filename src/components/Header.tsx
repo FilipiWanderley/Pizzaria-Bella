@@ -14,7 +14,7 @@ const navItems = [
 
 export function Header({ activeSection, onNavigate }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-20 w-full bg-pizzeria-red shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-pizzeria-red shadow-md">
       <div className="container flex items-center justify-between py-4">
         <div className="flex items-center gap-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white">
