@@ -15,7 +15,7 @@ export function HomeSection({ onNavigate }: HomeSectionProps) {
   ];
 
   return (
-    <section className="animate-fade-in space-y-4">
+    <section className="relative z-20 animate-fade-in space-y-4">
       {/* Hero Image */}
       <div className="relative h-48 w-full overflow-hidden rounded-xl shadow-sm md:h-64">
         <img
