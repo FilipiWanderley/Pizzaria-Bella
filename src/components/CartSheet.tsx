@@ -161,11 +161,33 @@ export function CartSheet({ open, onOpenChange, onOpenOrders }: CartSheetProps) 
             <h3 className="font-semibold text-gray-900">Seus Dados</h3>
             <div className="space-y-2">
               <Label htmlFor="name" className="text-gray-900">Nome Completo</Label>
-              <Input id="name" placeholder="Digite seu nome" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
+              <Input 
+                id="name" 
+                placeholder="Digite seu nome" 
+                required 
+                className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400"
+                onChange={(e) => {
+                  e.target.value = e.target.value.replace(/[^A-Za-zÀ-ÿ\s]/g, "");
+                }}
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-gray-900">Telefone</Label>
-              <Input id="phone" placeholder="(00) 00000-0000" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
+              <Input 
+                id="phone" 
+                placeholder="(00) 00000-0000" 
+                required 
+                className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400"
+                type="tel"
+                maxLength={15}
+                onChange={(e) => {
+                  let value = e.target.value.replace(/\D/g, "");
+                  if (value.length > 11) value = value.slice(0, 11);
+                  if (value.length > 2) value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                  if (value.length > 9) value = `${value.slice(0, 9)}-${value.slice(9)}`;
+                  e.target.value = value;
+                }}
+              />
             </div>
           </div>
 
