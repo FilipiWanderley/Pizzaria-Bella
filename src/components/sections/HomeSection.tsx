@@ -40,32 +40,35 @@ export function HomeSection({ onNavigate }: HomeSectionProps) {
       </div>
 
       {/* Search / Category Filter Mock */}
-      <div className="relative z-10">
+      <div className="relative z-50">
         <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
           <Search className="h-5 w-5 text-gray-400" />
         </div>
         <button 
           onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
-          className="w-full rounded-xl bg-white py-3 pl-10 pr-4 text-left text-sm text-gray-500 shadow-sm border border-gray-100 flex items-center justify-between hover:bg-gray-50 transition-colors"
+          className="w-full rounded-xl bg-white py-3 pl-10 pr-4 text-left text-sm text-gray-900 shadow-sm border border-gray-200 flex items-center justify-between hover:bg-gray-50 transition-colors"
         >
-          <span>Categorias</span>
+          <span className="font-medium">Categorias</span>
           <span className={`text-gray-400 transition-transform duration-200 ${isCategoriesOpen ? "rotate-180" : ""}`}>▼</span>
         </button>
 
         {isCategoriesOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white shadow-lg border border-gray-100 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => {
-                  onNavigate(category.id);
-                  setIsCategoriesOpen(false);
-                }}
-                className="w-full px-4 py-3 text-left text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-50 last:border-0 transition-colors"
-              >
-                {category.label}
-              </button>
-            ))}
+          <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white shadow-xl border border-gray-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200 z-50">
+            <div className="divide-y divide-gray-200">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => {
+                    onNavigate(category.id);
+                    setIsCategoriesOpen(false);
+                  }}
+                  className="w-full px-4 py-4 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors flex items-center justify-between group"
+                >
+                  <span>{category.label}</span>
+                  <span className="text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
