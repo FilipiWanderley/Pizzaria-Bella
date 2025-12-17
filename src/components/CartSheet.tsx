@@ -157,24 +157,24 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
           <div className="space-y-4">
             <h3 className="font-semibold text-gray-900">Seus Dados</h3>
             <div className="space-y-2">
-              <Label htmlFor="name">Nome Completo</Label>
-              <Input id="name" placeholder="Digite seu nome" required />
+              <Label htmlFor="name" className="text-gray-900">Nome Completo</Label>
+              <Input id="name" placeholder="Digite seu nome" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">Telefone</Label>
-              <Input id="phone" placeholder="(00) 00000-0000" required />
+              <Label htmlFor="phone" className="text-gray-900">Telefone</Label>
+              <Input id="phone" placeholder="(00) 00000-0000" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
             </div>
           </div>
 
           <div className="space-y-4">
             <h3 className="font-semibold text-gray-900">Endereço de Entrega</h3>
             <div className="space-y-2">
-              <Label htmlFor="address">Rua e Número</Label>
-              <Input id="address" placeholder="Av. Principal, 1000" required />
+              <Label htmlFor="address" className="text-gray-900">Rua e Número</Label>
+              <Input id="address" placeholder="Av. Principal, 1000" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="complement">Complemento</Label>
-              <Input id="complement" placeholder="Apto 101" />
+              <Label htmlFor="complement" className="text-gray-900">Complemento</Label>
+              <Input id="complement" placeholder="Apto 101" className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
             </div>
           </div>
 
@@ -184,49 +184,49 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
               <Label
                 htmlFor="credit"
                 className={`flex flex-col items-center justify-center gap-2 rounded-lg border p-4 hover:bg-gray-50 cursor-pointer ${
-                  paymentMethod === "credit" ? "border-pizzeria-green bg-green-50" : "border-gray-200"
+                  paymentMethod === "credit" ? "border-pizzeria-green bg-green-50" : "border-gray-200 bg-white"
                 }`}
               >
                 <RadioGroupItem value="credit" id="credit" className="sr-only" />
                 <CreditCard className="h-6 w-6 text-gray-600" />
-                <span className="text-xs font-medium">Crédito</span>
+                <span className="text-xs font-medium text-gray-900">Crédito</span>
               </Label>
               <Label
                 htmlFor="pix"
                 className={`flex flex-col items-center justify-center gap-2 rounded-lg border p-4 hover:bg-gray-50 cursor-pointer ${
-                  paymentMethod === "pix" ? "border-pizzeria-green bg-green-50" : "border-gray-200"
+                  paymentMethod === "pix" ? "border-pizzeria-green bg-green-50" : "border-gray-200 bg-white"
                 }`}
               >
                 <RadioGroupItem value="pix" id="pix" className="sr-only" />
                 <QrCode className="h-6 w-6 text-gray-600" />
-                <span className="text-xs font-medium">PIX</span>
+                <span className="text-xs font-medium text-gray-900">PIX</span>
               </Label>
               <Label
                 htmlFor="cash"
                 className={`flex flex-col items-center justify-center gap-2 rounded-lg border p-4 hover:bg-gray-50 cursor-pointer ${
-                  paymentMethod === "cash" ? "border-pizzeria-green bg-green-50" : "border-gray-200"
+                  paymentMethod === "cash" ? "border-pizzeria-green bg-green-50" : "border-gray-200 bg-white"
                 }`}
               >
                 <RadioGroupItem value="cash" id="cash" className="sr-only" />
                 <Banknote className="h-6 w-6 text-gray-600" />
-                <span className="text-xs font-medium">Dinheiro</span>
+                <span className="text-xs font-medium text-gray-900">Dinheiro</span>
               </Label>
             </RadioGroup>
 
             {paymentMethod === "credit" && (
                <div className="space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-4">
                  <div className="space-y-2">
-                   <Label htmlFor="card-number">Número do Cartão</Label>
-                   <Input id="card-number" placeholder="0000 0000 0000 0000" required />
+                   <Label htmlFor="card-number" className="text-gray-900">Número do Cartão</Label>
+                   <Input id="card-number" placeholder="0000 0000 0000 0000" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
                  </div>
                  <div className="grid grid-cols-2 gap-4">
                    <div className="space-y-2">
-                     <Label htmlFor="card-expiry">Validade</Label>
-                     <Input id="card-expiry" placeholder="MM/AA" required />
+                     <Label htmlFor="card-expiry" className="text-gray-900">Validade</Label>
+                     <Input id="card-expiry" placeholder="MM/AA" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
                    </div>
                    <div className="space-y-2">
-                     <Label htmlFor="card-cvv">CVV</Label>
-                     <Input id="card-cvv" placeholder="123" required />
+                     <Label htmlFor="card-cvv" className="text-gray-900">CVV</Label>
+                     <Input id="card-cvv" placeholder="123" required className="bg-white text-gray-900 border-gray-300 placeholder:text-gray-400" />
                    </div>
                  </div>
                </div>
