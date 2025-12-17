@@ -17,9 +17,10 @@ import { useCart } from "@/contexts/CartContext";
 interface CartSheetProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onOpenOrders?: () => void;
 }
 
-export function CartSheet({ open, onOpenChange }: CartSheetProps) {
+export function CartSheet({ open, onOpenChange, onOpenOrders }: CartSheetProps) {
   const { items, removeFromCart, updateQuantity, total, itemCount, clearCart } = useCart();
   const [step, setStep] = useState<'cart' | 'checkout' | 'success'>('cart');
   const [paymentMethod, setPaymentMethod] = useState('credit');
@@ -268,7 +269,10 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
       </p>
       <div className="w-full space-y-3">
         <Button 
-          onClick={() => onOpenChange(false)} 
+          onClick={() => {
+            onOpenChange(false);
+            onOpenOrders?.();
+          }} 
           className="w-full bg-pizzeria-green hover:bg-pizzeria-green/90 text-white font-bold h-12"
         >
           Acompanhar Pedido

@@ -37,7 +37,11 @@ export function BottomNav() {
         </div>
       </div>
 
-      <CartSheet open={cartOpen} onOpenChange={setCartOpen} />
+      <CartSheet 
+        open={cartOpen} 
+        onOpenChange={setCartOpen} 
+        onOpenOrders={() => setOrdersOpen(true)}
+      />
       <OrdersDialog open={ordersOpen} onOpenChange={setOrdersOpen} />
     </>
   );
