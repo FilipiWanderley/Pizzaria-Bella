@@ -1,4 +1,6 @@
 import { Plus } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/components/ui/use-toast";
 
 interface MenuCardProps {
   image: string;
@@ -9,6 +11,25 @@ interface MenuCardProps {
 }
 
 export function MenuCard({ image, title, description, price }: MenuCardProps) {
+  const { addToCart } = useCart();
+  const { toast } = useToast();
+
+  const handleAddToCart = () => {
+    addToCart({
+      title,
+      price,
+      image,
+      description
+    } as any); // Using 'any' temporarily to bypass strict typing if interface mismatch, but should be fine
+    
+    toast({
+      title: "Item adicionado!",
+      description: `${title} foi adicionado à sua sacola.`,
+      duration: 2000,
+      className: "bg-pizzeria-green text-white border-none",
+    });
+  };
+
   return (
     <div className="group relative flex w-full overflow-hidden rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md border border-gray-100">
       <div className="flex flex-1 flex-col justify-between pr-4">
@@ -37,7 +58,10 @@ export function MenuCard({ image, title, description, price }: MenuCardProps) {
           className="h-full w-full rounded-lg object-cover shadow-sm"
           loading="lazy"
         />
-        <button className="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-pizzeria-red shadow-md hover:bg-gray-50 ring-1 ring-gray-100">
+        <button 
+          onClick={handleAddToCart}
+          className="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-pizzeria-red shadow-md hover:bg-gray-50 ring-1 ring-gray-100 transition-transform active:scale-95"
+        >
           <Plus className="h-5 w-5" />
         </button>
       </div>
