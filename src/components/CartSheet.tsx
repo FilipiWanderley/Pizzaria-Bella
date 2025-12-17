@@ -302,9 +302,8 @@ export function CartSheet({ open, onOpenChange, onOpenOrders }: CartSheetProps) 
           Acompanhar Pedido
         </Button>
         <Button 
-          variant="outline" 
           onClick={() => onOpenChange(false)}
-          className="w-full border-gray-300 text-gray-900 hover:bg-gray-100"
+          className="w-full bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 shadow-sm"
         >
           Fechar
         </Button>
