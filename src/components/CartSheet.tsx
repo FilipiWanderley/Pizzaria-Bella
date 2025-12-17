@@ -67,7 +67,7 @@ export function CartSheet({ open, onOpenChange, onOpenOrders }: CartSheetProps) 
               <p className="text-sm text-gray-500">Adicione itens deliciosos para começar seu pedido.</p>
             </div>
             <SheetClose asChild>
-              <Button variant="outline" className="mt-4">
+              <Button variant="outline" className="mt-4 border-gray-200 text-gray-900 hover:bg-gray-100">
                 Voltar ao cardápio
               </Button>
             </SheetClose>
